@@ -29,7 +29,7 @@ MAP = args.mapPath
 
 SCROLLSPEED = 1.3 # i wouldn't go above 2.5
 VOLUME = 0.1 # between 0.0-1.0 (this is LOUD, stay low)
-GLOBALINPUTOFFSET = 15 # offsets all inputs by this value. may not be needed
+GLOBALINPUTOFFSET = 0 # offsets all inputs by this value. may not be needed
 
 NOTEWIDTH = 120
 NOTEHEIGHT = 30
