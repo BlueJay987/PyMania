@@ -26,12 +26,12 @@ IMAGES!
 ---
 
 ## How to Play
+**(make sure you have the required libraries installed, found in requirements.txt)**
 there are 2 ways!  
 
 ### 1
 run mapselector.py
-find your desired map in the maps/ directory, and choose your selected .osu file  
-also choose the audio file (this is planned to be removed, be patient :D)  
+find your desired map in the maps/ directory, and choose your selected .osu file   
 click the run button!  
 
 ### 2
