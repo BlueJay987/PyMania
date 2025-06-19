@@ -5,7 +5,16 @@ a simple version of osu!mania made in PyGame!
 PyMania is a remake of osu!mania made in PyGame!  
 it only supports 4k maps.  
 you can import maps from osu, and play them!  
-it's also what i like to call JANKY AF!!! ^_^ WOOOOOOOOOO!  
+it's also what i like to call JANKY AF!!! ^_^ WOOOOOOOOOO!
+
+it comes with 3 main files:
+- pymania.py ~ contains the actual game, and can be run with a command (read below)
+- mapselector.py ~ opens up a nice GUI so you can easily load maps to play ^_^
+- parser.py ~ don't run this, it's only for making pymania read maps
+
+there's also a few maps that come with the game, so you can try right away!
+**(please tell me if there's an issue with me including them lmao)**
+
 
 PyMania was originally started for a school project, but will hopefully continue to recieve updates!  
 i hope you enjoy looking through it! (maybe enough to contribute...?)  
