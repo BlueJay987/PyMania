@@ -3,6 +3,7 @@ from tkinter import filedialog
 import subprocess
 import sys
 import os
+from pathlib import Path
 
 
 class MapSelector(tk.Tk):
@@ -11,7 +12,7 @@ class MapSelector(tk.Tk):
     
         self.title("PyMania Loader")
         self.configure(bg="#191919")
-        self.geometry("400x500")
+        self.geometry("400x400")
         self.resizable(False, False)
 
         self.mapPath = None
@@ -61,14 +62,6 @@ class MapSelector(tk.Tk):
         )
         mapButton.pack(pady=10)
 
-        audiofilelabel = tk.Label(
-            text="Audio",
-            font=("Courier", 15),
-            bg="#191919",
-            fg="white",
-        )
-        audiofilelabel.pack()
-
         audioPathlabel = tk.Label(
             textvariable=self.audioPathVar,
             font=("Courier", 10),
@@ -76,17 +69,6 @@ class MapSelector(tk.Tk):
             fg="magenta",
         )
         audioPathlabel.pack()
-
-        audioButton = tk.Button(
-            text="Select",
-            width=10,
-            height=2,
-            font=("Courier", 12),
-            command=self.getAudioPath,
-            anchor="center",
-            bg="#3B82F6",
-        )
-        audioButton.pack(pady=10)
 
         playButton = tk.Button(
             text="Play Map",
@@ -100,7 +82,7 @@ class MapSelector(tk.Tk):
         playButton.pack(pady=30)
 
     def getMapPath(self):
-        """returns the filepath of the map"""
+        """returns the filepath of the map, as well as automatically fetching the audio too."""
         filetypes = (
             ("Map Files", "*.osu *.pymm"),
             ("All Files", "*.*")
@@ -108,14 +90,15 @@ class MapSelector(tk.Tk):
         self.mapPath = filedialog.askopenfilename(filetypes=filetypes)
         self.mapPathVar.set(os.path.basename(self.mapPath))
 
-    def getAudioPath(self):
-        """returns the filepath of the audio"""
-        filetypes = (
-            ("Audio Files", "*.ogg *.mp3 *.wav"),
-            ("All Files", "*.*")
-        )
-        self.audioPath = filedialog.askopenfilename(filetypes=filetypes)
-        self.audioPathVar.set(os.path.basename(self.audioPath))
+        # using the map path, find the audio path
+        mapdir = Path(self.mapPath).parent
+
+        for i in [".mp3", ".ogg", ".wav"]:
+            filename = f"audio{i}"
+            audio = mapdir / filename
+            if audio.exists():
+                self.audioPath = audio
+                self.audioPathVar.set(os.path.basename(self.audioPath))
 
     def launch(self):
         """launches PyMania"""
