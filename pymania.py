@@ -391,6 +391,10 @@ while True:
                 currentHitKeys[3] = getSongTime()
             elif event.key == K_k:
                 currentHitKeys[4] = getSongTime()
+            # allows quitting with escape 
+            elif event.key == K_ESCAPE:
+                pygame.quit()
+                sys.exit()
 
         elif event.type == KEYUP:
             if event.key == K_d:
